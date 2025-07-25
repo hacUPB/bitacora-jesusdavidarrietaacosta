@@ -121,7 +121,48 @@ M=D+D
 
 //Reto 11
 
+//Considera el siguiente programa:
 
+i = 1000
+LOOP:
+if (i == 0) goto CONT
+i = i - 1
+goto LOOP
+CONT:
+​
+//La traducción a lenguaje ensamblador del programa anterior es:
+
+// i = 1000
+@1000
+D=A
+@i
+M=D
+(LOOP)
+// if (i == 0) goto CONT
+@i
+D=M
+@CONT
+D;JEQ
+// i = i - 1
+@i
+M=M-1
+// goto LOOP
+@LOOP
+0;JMP
+(CONT)
+
+// ¿Qué hace este programa?
+// Hace un conteo regresivo desde el 1000 hasta el 0.
+// ¿En qué memoria está almacenada la variable i? ¿En qué dirección de esa memoria?
+// En la dirreción de RAM 16.
+// ¿En qué memoria y en qué dirección de memoria está almacenado el comentario //i = 1000?
+// Los comentarios no se guardan pues no le sirve a la maquina solo al usuario.
+// ¿Cuál es la primera instrucción del programa anterior? ¿En qué memoria y en qué dirección de memoria está almacenada esa instrucción?
+// @1000 y está en el registro A, y la instrucción en si está en la ROM en la dirección 0.
+// ¿Qué son CONT y LOOP?
+// Son etiquetas que se usan para hacer saltos.
+// ¿Cuál es la diferencia entre los símbolos `i` y `CONT`?
+// Uno es una variable que contiene un valor, el segundo es una etiqueta que no contiene un valor pero sirve para hacer saltos.
 
 //Reto 12
 
@@ -133,3 +174,104 @@ D=M+D
 D=M+D 
 @R4
 M=D 
+
+//Reto 13
+
+@R0        
+D=M       
+@SALTO
+D;JGE     
+@R1        
+M=-1      
+@LOOP
+0;JMP     
+(SALTO)
+@1        
+M=1       
+(LOOP)
+@LOOP
+0;JMP     
+
+//Reto 14
+
+@R1      
+D=M     
+@3
+M=D     
+@3
+A=M     
+D=M     
+@R4      
+M=D     
+
+//Reto 15
+
+@R0
+D=M
+@16
+M=D
+@R1
+D=M
+@17
+M=D
+(LOOP)
+@17         
+D=M
+@FINAL
+D;JEQ       
+@16
+A=M         
+M=-1        
+@16
+M=M+1
+@17
+M=M-1
+@LOOP
+0;JMP   
+(FINAL)
+
+//Reto 16
+
+@0
+D=A
+@26        
+M=D
+@0
+D=A
+@27        
+M=D
+(LOOP)
+@27
+D=M
+@10
+D=D-A
+@FINAL
+D;JGE
+@27
+D=M
+@16
+A=D+A
+D=M
+@26
+M=D+M
+@27
+M=M+1
+@LOOP
+0;JMP
+(FINAL)
+
+
+//Reto 17
+
+@7
+D=D-A    // D = D - 7
+@69
+D;JEQ
+
+//Reto 18
+
+
+
+//Reto 19
+
+//Este programa dibuja 4 valores en pantalla y luego los invierte si una tecla está presionada. Y hace un loop continuo que va alternando entre pintar e invertir
