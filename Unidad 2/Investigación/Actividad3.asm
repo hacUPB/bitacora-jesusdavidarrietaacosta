@@ -217,7 +217,31 @@ D;JEQ
 
 (DELETE)
 
+@SCREEN       
+D=A
+@addr
+M=D        
 
+@8192
+D=A
+@count
+M=D          
+
+(CLEAR)
+@addr
+A=M
+M=0         
+
+@addr
+M=M+1      
+
+@count
+M=M-1       
+
+@CLEAR
+D=M
+@CLEAR
+D;JGT
 
 @LOOP
 0;JMP

@@ -1,4 +1,4 @@
-//Pregunta 3:
+//Pregunta 3
 
 @SCREEN       
 D=A
