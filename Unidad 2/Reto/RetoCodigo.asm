@@ -1,3 +1,5 @@
+//Retos
+
 //Reto 1
 
 @1
@@ -31,6 +33,8 @@ M=M+1
 
 @LOOP
 0;JMP
+
+(END)
 
 //Reto 5
 
@@ -70,4 +74,28 @@ D=M
 @bis
 M=D 
 
+//Reto 9
 
+@6
+D=A
+@a     
+M=D
+
+@9
+D=A
+@b     
+M=D
+
+@a     
+D=M
+
+@b     
+D=D+M
+
+@result     
+M=D
+
+@result    
+D=M
+@c     
+M=D
